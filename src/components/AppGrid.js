@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./component-styles/keyframes.css";
 import { Form, FormField, Button, Grid, Box, Markdown } from "grommet";
 
 class AppGrid extends Component {
@@ -22,7 +23,8 @@ class AppGrid extends Component {
         margin="small"
       >
         <Box
-          className="dropped-box"
+          className="shakey"
+          onMouseOver="shakey"
           gridArea="greeter"
           gap="medium"
           flex
@@ -33,23 +35,19 @@ class AppGrid extends Component {
           alignSelf="center"
           elevation="medium"
           wrap
-          margin="medium"
+          margin="large"
           pad="large"
           overflow="auto"
-          animation="slideDown"
           responsive
           round="large"
           justify="center"
           align="center"
           background="#ffffffdd"
         >
-          <Markdown className="markdown">
-            ## "ClassAsk is *Piazza on steroids*"
-          </Markdown>
-          <Markdown className="markdown">
-            ##### 
-            *-- Smit R. (TA @ The University of Toronto, Mississauga)*
-          </Markdown>
+          <Form pad="large">
+            <FormField name="name" label="Class Code" />
+            <Button type="submit" primary color="#000000" label="Submit" />
+          </Form>
         </Box>
         <Box
           className="dropped-box"
@@ -87,7 +85,7 @@ class AppGrid extends Component {
           a11yTitle="ClassAsk box for download buttons"
           alignSelf="center"
           elevation="medium"
-          margin="medium"
+          margin="large"
           pad="medium"
           overflow="auto"
           animation="slideDown"
@@ -97,10 +95,12 @@ class AppGrid extends Component {
           align="center"
           background="#ffffffdd"
         >
-          <Form pad="large">
-            <FormField name="name" label="Class Code" />
-            <Button type="submit" primary color="#000000" label="Submit" />
-          </Form>
+          <Markdown className="markdown">
+            ## "ClassAsk is *Piazza on steroids*"
+          </Markdown>
+          <Markdown className="markdown">
+            ##### *-- Smit R. (TA @ The University of Toronto, Mississauga)*
+          </Markdown>
         </Box>
       </Grid>
     );
