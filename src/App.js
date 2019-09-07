@@ -1,7 +1,11 @@
-import React from "react";
+import React from 'react';
+import logo from './logo.svg';
+import Home from './scenes';
+import './App.css';
 import { Grid, Box, Markdown, Grommet } from "grommet";
 import "./App.css";
 import { grommet } from "grommet/themes";
+
 
 function App() {
   return (
