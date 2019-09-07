@@ -28,6 +28,12 @@ class ClassCodeForm extends Component {
           align="center"
           background="#ffffffdd"
         >
+          <Box height="small" width="medium">
+            <Image
+              fit="contain"
+              src="ClassAsk.png"
+            />
+          </Box>
           <Form pad="large">
             <FormField name="name" label="Class Code" />
             <Button type="submit" primary color="#000000" label="Submit" />
