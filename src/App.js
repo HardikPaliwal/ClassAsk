@@ -7,7 +7,7 @@ import QuestionPage from "./components/QuestionPage";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function land(){
-  return ( 
+  return (
   <Grommet theme={grommet} full>
     <ClassCodeForm/>
   </Grommet>
@@ -24,10 +24,9 @@ function App() {
       <Route path="/Home" component={Home} />
     </div>
   </Router>
-   
-   
-  );
 
+
+  );
 }
 
 export default App;
