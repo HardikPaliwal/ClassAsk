@@ -4,7 +4,7 @@ import Home from './scenes';
 import './App.css';
 import { Grid, Box, Markdown, Grommet } from "grommet";
 import "./App.css";
-import { grommet } from "grommet/themes";
+import {grommet} from "grommet/themes";
 
 
 function App() {
