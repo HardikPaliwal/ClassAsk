@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Box, Markdown } from "grommet";
+import { Form, FormField, Button, Grid, Box, Markdown } from "grommet";
 
 class AppGrid extends Component {
   render() {
@@ -44,7 +44,11 @@ class AppGrid extends Component {
           background="#ffffffdd"
         >
           <Markdown className="markdown">
-            ## ClassAsk is *Piazza on steroids*
+            ## "ClassAsk is *Piazza on steroids*"
+          </Markdown>
+          <Markdown className="markdown">
+            ##### 
+            *-- Smit R. (TA @ The University of Toronto, Mississauga)*
           </Markdown>
         </Box>
         <Box
@@ -93,11 +97,10 @@ class AppGrid extends Component {
           align="center"
           background="#ffffffdd"
         >
-          <Markdown className="markdown">
-            #### Coming soon to the [App
-            Store](https://www.apple.com/ca/ios/app-store/) and [Google
-            Play](https://play.google.com/store).
-          </Markdown>
+          <Form pad="large">
+            <FormField name="name" label="Class Code" />
+            <Button type="submit" primary color="#000000" label="Submit" />
+          </Form>
         </Box>
       </Grid>
     );
