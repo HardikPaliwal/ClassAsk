@@ -1,0 +1,31 @@
+.card{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+.header{
+    align-items: center;
+    display: flex;
+    padding: 0 5%;
+    justify-content: space-between;
+}
+
+.title{
+    display: inline-flex;
+}
+.addButton{
+    display: inline-flex;
+}
+
+.class-card{
+    display: inline-flex;
+    background-color: whitesmoke !important;
+    justify-content: space-between;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    width:90%
+}
+
+.start-button {
+    padding: -5px !important;
+}
