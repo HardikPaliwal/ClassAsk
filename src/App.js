@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import ClassCodeForm from "./components/ClassCodeForm";
 import { Grommet } from "grommet";
 import { grommet } from "grommet/themes";
@@ -20,6 +20,7 @@ function App() {
     <Route path="/classroom" component={QuestionPage} />
    
   );
+
 }
 
 export default App;
