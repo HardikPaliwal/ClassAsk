@@ -8,7 +8,7 @@ class ClassCodeForm extends Component {
     this.state = {
       loginFlow: "student",
       bottomText: "Not a student? Click here for professors' login.",
-      topText: "Sign In"
+      topText: "Instructor Sign In"
     };
   }
   onClickBottomText(state) {
@@ -21,13 +21,13 @@ class ClassCodeForm extends Component {
       if (this.state.loginFlow == "signIn")
         this.setState({
           loginFlow: "signUp",
-          topText: "Sign Up",
+          topText: "Instructor Sign Up",
           bottomText: "Sign in instead."
         });
       else
         this.setState({
           loginFlow: "signIn",
-          topText: "Sign In",
+          topText: "Instructor Sign In",
           bottomText: "Don't have an account? Click here to sign up now!"
         });
     }
@@ -65,11 +65,12 @@ class ClassCodeForm extends Component {
             <Image fit="contain" src="ClassAsk.png" />
           </Box>
           {this.state.loginFlow == "student" ? (
-            <Form align="center" pad="large">
+            <Form onSubmit={({ value }) => console.log("Submit: ", value)} align="center" pad="large">
               <FormField
                 style={{ "text-align": "center" }}
                 color="gray"
-                name="name"
+                name="classcode"
+                required
                 placeholder="ex. 123456"
                 label="Class Code"
               />
@@ -86,32 +87,32 @@ class ClassCodeForm extends Component {
                 {this.state.topText}
               </Text>
               <Box pad="medium">
-                <Form>
+                <Form align="center" onSubmit={({ value }) => console.log("Submit: ", value)}>
                   <FormField
                     style={{ "text-align": "center" }}
                     color="gray"
-                    name="name"
+                    name="username"
                     placeholder="ex. Joe_1988"
                     label="Username"
+                    required
                   />
-                </Form>
-                <Form>
                   <FormField
                     style={{ "text-align": "center" }}
                     color="gray"
-                    name="name"
+                    name="password"
                     placeholder="******"
                     label="Password"
+                    required
                   />
+                  <Button type="submit" label="Submit" primary={true} color="#000000" />
                 </Form>
-                <Button type="submit" primary color="#000000" label="Submit" />
               </Box>
             </Box>
           ) : (
             " "
           )}
           <div onClick={this.onClickBottomText.bind(this)} href="#">
-            <Anchor href="#">{this.state.bottomText}</Anchor>
+            <Anchor>{this.state.bottomText}</Anchor>
           </div>
         </Box>
       </Box>
