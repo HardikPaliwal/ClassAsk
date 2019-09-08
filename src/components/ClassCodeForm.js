@@ -38,6 +38,7 @@ class ClassCodeForm extends Component {
               name="name"
               label="Class Code"
             />
+            
             <Button type="submit" primary color="#000000" label="Submit" />
           </Form>
         </Box>

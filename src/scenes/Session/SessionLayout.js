@@ -1,6 +1,5 @@
 import React from "react";
 import {Button, Card, LinearProgress } from "@material-ui/core"
-import {Progress, Tooltip} from 'antd';
 import "./Session.css";
 const testID = "545543";
 const testData = [{name:"Question 1"}, {name:"Question 2"}]
