@@ -30,7 +30,7 @@ const HomeLayout = () => {
                     <AddIcon/>
                 </Fab>
             </div>
-            <div>
+            <div className="cards">
                 {
                     testData.map((data) => {
                         return (
