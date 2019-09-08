@@ -1,16 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import {Home, Session} from './scenes';
-import {Helmet} from 'react-helmet';
-import './App.css';
-import { Grid, Box, Markdown, Grommet } from "grommet";
-import "./App.css";
+import React from "react";
+import ClassCodeForm from "./components/ClassCodeForm";
+import { Grommet } from "grommet";
 import { grommet } from "grommet/themes";
+import QuestionPage from "./components/QuestionPage";
 
 
 function App() {
   return (
-      <Session/>
+    <Grommet theme={grommet} full>
+      <ClassCodeForm/>
+    </Grommet>
   );
 }
 
