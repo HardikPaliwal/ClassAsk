@@ -10,12 +10,7 @@ import { grommet } from "grommet/themes";
 
 function App() {
   return (
-      <>
-         <Box className="box">
-             <Session/>
-         </Box>
-      </>
-
+      <Session/>
   );
 }
 
