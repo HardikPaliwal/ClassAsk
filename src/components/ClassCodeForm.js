@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./component-styles/keyframes.css";
 import { Form, FormField, Button, Box, Image, Anchor, Text } from "grommet";
-
+import Axios from "axios"
 class ClassCodeForm extends Component {
   constructor(props) {
     super(props);
@@ -11,6 +11,32 @@ class ClassCodeForm extends Component {
 
       topText: "Instructor Sign In"
     };
+  }
+  submit(value, props){
+    if(this.state.loginFlow === "student"){
+      localStorage.setItem("Classroom Key", value.classCode);
+      this.props.history.push('/student');
+    } else if(this.state.loginFlow === "signUp"){
+      Axios.post("http://localhost:2000/api/user", {"username": value.username, "password": value.password})
+      .then(function(response){
+        localStorage.setItem("username", value.username);
+        localStorage.setItem("UUID", response.body);
+        window.location.href = "/home"
+      }).catch(function (error) {
+        alert(error);
+      });
+    } else if(this.state.loginFlow === "signIn"){
+      Axios.post("http://localhost:2000/api/user/Login", {"username": value.username, "password": value.password})
+      .then(function(response){
+        console.log(response);
+        localStorage.setItem("username", value.username);
+        localStorage.setItem("UUID", response);
+        window.location.href = "/home"
+      }).catch(function (error) {
+        alert(error);
+      });
+    } 
+    function handleSubmit(name){ Axios.post("/api/class", {"className": name, username: localStorage.getItem("username")}) .then(function(response){ console.log(response); }).catch(function (error) { console.log(error); }); }
   }
   onClickBottomText(state) {
     if (this.state.loginFlow == "student") {
@@ -69,7 +95,7 @@ class ClassCodeForm extends Component {
           </Box>
           {this.state.loginFlow == "student" ? (
             <Form
-              onSubmit={({ value }) => console.log("Submit: ", value)}
+              onSubmit={({ value }) => this.submit(value, this.props)}
               align="center"
               pad="large"
             >
@@ -96,7 +122,7 @@ class ClassCodeForm extends Component {
               <Box pad="medium">
                 <Form
                   align="center"
-                  onSubmit={({ value }) => console.log("Submit: ", value)}
+                  onSubmit={({ value }) => this.submit(value)}
                 >
                   <FormField
                     style={{ "text-align": "center" }}
