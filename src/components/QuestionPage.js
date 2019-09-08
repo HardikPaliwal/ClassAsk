@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import StarRating from "react-star-rating";
-import { Button, Box, Image, FormField, Markdown, Form, grommet } from "grommet";
+import { Button, Box, FormField, Form } from "grommet";
 import { Edit } from "grommet-icons";
-import { Grommet, Text, Heading } from "grommet";
+import { Text } from "grommet";
 
 class QuestionPage extends Component {
   constructor(props){

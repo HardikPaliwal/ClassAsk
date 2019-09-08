@@ -29,13 +29,15 @@ class ClassCodeForm extends Component {
           background="#ffffffdd"
         >
           <Box height="small" width="medium">
-            <Image
-              fit="contain"
-              src="ClassAsk.png"
-            />
+            <Image fit="contain" src="ClassAsk.png" />
           </Box>
-          <Form pad="large">
-            <FormField name="name" label="Class Code" />
+          <Form align="center" pad="large">
+            <FormField
+              style={{ "text-align": "center" }}
+              color="gray"
+              name="name"
+              label="Class Code"
+            />
             <Button type="submit" primary color="#000000" label="Submit" />
           </Form>
         </Box>

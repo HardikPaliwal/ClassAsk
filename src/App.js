@@ -8,7 +8,6 @@ import QuestionPage from "./components/QuestionPage";
 function App() {
   return (
     <Grommet theme={grommet} full>
-
       <ClassCodeForm/>
     </Grommet>
   );
