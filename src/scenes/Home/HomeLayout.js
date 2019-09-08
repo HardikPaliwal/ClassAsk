@@ -13,6 +13,7 @@ const testData = [{name:"class1"}, {name:"class2"}];
 
 const HomeLayout = () => {
     const [open, setOpen] = React.useState(false);
+    const [name, setName] = React.useState("")
 
     function handleClickOpen() {
         setOpen(true);
@@ -20,6 +21,17 @@ const HomeLayout = () => {
 
     function handleClose() {
         setOpen(false);
+        setName("");
+    }
+
+    function onSubmitClick(e) {
+        console.log(name);
+        handleClose();
+    }
+
+    const onChangeTextfield = (event) => {
+        const text = event.target.value.replace(/^\s+/g, "");
+        setName(text)
     }
 
     return (
@@ -55,13 +67,14 @@ const HomeLayout = () => {
                         id="name"
                         label="Name"
                         fullWidth
+                        onChange={onChangeTextfield}
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="secondary">
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={onSubmitClick} color="primary">
                         Create
                     </Button>
                 </DialogActions>
