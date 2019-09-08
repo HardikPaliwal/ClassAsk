@@ -1,36 +1,37 @@
 import React from "react";
-import {Button, Card, LinearProgress } from "@material-ui/core"
+import {Button, Card, Box, LinearProgress } from "@material-ui/core"
+import {Progress, Tooltip} from 'antd';
 import "./Session.css";
 const testID = "545543";
-const testData = [{name:"Question 1"}, {name:"Question 2"}]
+const testData = [{name:"Question 1"}, {name:"Question 2"}, {name:"Question 3"}, {name:"Question 4"}, {name:"Question 5"}]
+const testValue = 75;
 const SessionLayout = () => {
     return (
-        <div className="page">
+        <Card className="page">
             <div className='container'>
-                <div className='row'>
-                    <div className='column'/>
-                    <div className='column'>
-                        <h1 className='id'>
-                            {testID}
-                        </h1>
-                    </div>
-                    <div className='column'>
-                        <div className='orange-column'>
-                            <Button variant="contained" color="secondary">
-                                End Session
-                            </Button>
-                        </div>
-                    </div>
+                <div className="id-header">
+                    <h1 className='id'>
+                        ID: {testID}
+                    </h1>
+                    <Button className="end-button" variant="contained" color="secondary">
+                        End Session
+                    </Button>
+
                 </div>
             </div>
-            <div className="cards">
+            <Box className="question-cards">
                 {testData.map((data) => QuestionCard(data.name))}
+            </Box>
+            <div className="progress-content">
+                <div className="labels">
+                    <h3>On Track - {testValue}%</h3>
+                    <h3>Confused - {100 - testValue}%</h3>
+                </div>
+                <LinearProgress className="progress" color="primary" variant="buffer" value={testValue}/>
+                <LinearProgress className="progress" color="primary" variant="buffer" value={testValue}/>
             </div>
-            <div>
-                <LinearProgress className="progress" color="primary" variant="buffer" value="50"/>
-                <LinearProgress className="progress" color="primary" variant="buffer" value="50"/>
-            </div>
-        </div>
+
+        </Card>
     );
 };
 

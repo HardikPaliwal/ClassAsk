@@ -1,30 +1,20 @@
-import React, { Component } from "react";
-import ClassCodeForm from "./components/ClassCodeForm";
-import { Grommet } from "grommet";
+import React from 'react';
+import logo from './logo.svg';
+import {Home, Session} from './scenes';
+import {Helmet} from 'react-helmet';
+import './App.css';
+import { Grid, Box, Markdown, Grommet } from "grommet";
+import "./App.css";
 import { grommet } from "grommet/themes";
-import {Home, Session } from "./scenes"
-import QuestionPage from "./components/QuestionPage";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-function land(){
-  return (
-  <Grommet theme={grommet} full>
-    <ClassCodeForm/>
-  </Grommet>
-  )
-}
 
 function App() {
   return (
-    <Router>
-    <div>
-      <Route path="/" exact component={land} />
-      <Route path="/student" component={QuestionPage} />
-      <Route path="/classroom" component={Session} />
-      <Route path="/Home" component={Home} />
-    </div>
-  </Router>
-
+      <>
+         <Box className="box">
+             <Session/>
+         </Box>
+      </>
 
   );
 }
