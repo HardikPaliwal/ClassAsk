@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Home.css";
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
@@ -8,54 +8,89 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import Axios from "axios"
+import { DataTable } from "grommet";
 const testData = [{name:"class1"}, {name:"class2"}];
 
-const HomeLayout = () => {
-    const [open, setOpen] = React.useState(false);
-    const [name, setName] = React.useState("")
-
-    function handleClickOpen() {
-        setOpen(true);
+class HomeLayout extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: false, 
+            name: "", 
+            data: []
+        };
+        this.loadData()
+        .then((response) =>{
+             this.setState({data: Array.from(Object.keys(response.data), k=>[`${k}`, response.data[k]])});
+             console.log(this.state.data);
+        }).catch(function (error) { 
+            console.log(error);
+        })
+        // this.setState({data: [...data]}); 
     }
 
-    function handleClose() {
-        setOpen(false);
-        setName("");
+    loadData = () =>{
+        return Axios.post("http://localhost:2000/api/class/get", { username: localStorage.getItem("username")}) 
+    }
+    handleClose= () =>{
+        this.setState({open: false, name:"" });
+    }
+    handleClickOpen = () =>{
+        this.setState({open: true});
+    }
+    moveToClass = () =>{
+        window.location.href = "/classroom"
+    }
+    handleSubmit(name){ 
+        Axios.post("http://localhost:2000/api/class", {"className": name, username: localStorage.getItem("username")}) 
+        .then(function(response){ console.log(response); })
+        .catch(function (error) { console.log(error); }); 
+        this.loadData()
+        .then((response) =>{
+             this.setState({data: Array.from(Object.keys(response.data), k=>[`${k}`, response.data[k]])});
+             console.log(this.state.data);
+        }).catch(function (error) { 
+            console.log(error);
+        })    
+    }
+    handleClose= () =>{
+        this.setState({open: false, name:"" });
     }
 
-    function onSubmitClick(e) {
-        console.log(name);
-        handleClose();
+    onSubmitClick = (e) => {
+        console.log(this.state.name);
+        this.handleSubmit(this.state.name);
+        this.handleClose();
     }
 
-    const onChangeTextfield = (event) => {
+    onChangeTextfield = (event) => {
         const text = event.target.value.replace(/^\s+/g, "");
-        setName(text)
+        this.setState({name:text});
     }
 
-    return (
+    render() { return (
         <Card className="card">
             <div className="header">
                 <h1 className="title">Classes</h1>
-                <Fab className="add-button" onClick={handleClickOpen} size="small">
+                <Fab className="add-button" onClick={this.handleClickOpen} size="small">
                     <AddIcon/>
                 </Fab>
             </div>
             <div className="cards">
                 {
-                    testData.map((data) => {
+                    this.state.data.map((data) => {
                         return (
                             <div className="class-card">
-                                <p> {data.name} </p>
-                                <Button className="start-button" color="primary" size="small">Start</Button>
+                                <p> {data[1].className} </p>
+                                <Button className="start-button" color="primary" size="small" onClick= {this.moveToClass}>Start</Button>
                             </div>
                         )
                     })
                 }
             </div>
 
-            <Dialog open={open} onClose={handleClose} className="dialog">
+            <Dialog open={this.state.open} onClose={this.handleClose} className="dialog">
                 <DialogTitle id="form-dialog-title">Create New Class</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -67,20 +102,20 @@ const HomeLayout = () => {
                         id="name"
                         label="Name"
                         fullWidth
-                        onChange={onChangeTextfield}
+                        onChange={this.onChangeTextfield}
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="secondary">
+                    <Button onClick={this.handleClose} color="secondary">
                         Cancel
                     </Button>
-                    <Button onClick={onSubmitClick} color="primary">
+                    <Button onClick={this.onSubmitClick} color="primary">
                         Create
                     </Button>
                 </DialogActions>
             </Dialog>
         </Card>
-    );
+    )}
 };
 
 

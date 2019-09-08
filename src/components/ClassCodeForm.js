@@ -36,7 +36,6 @@ class ClassCodeForm extends Component {
         alert(error);
       });
     } 
-    function handleSubmit(name){ Axios.post("/api/class", {"className": name, username: localStorage.getItem("username")}) .then(function(response){ console.log(response); }).catch(function (error) { console.log(error); }); }
   }
   onClickBottomText(state) {
     if (this.state.loginFlow == "student") {

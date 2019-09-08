@@ -12,7 +12,7 @@ const SessionLayout = () => {
                     <h1 className='id'>
                         ID: {testID}
                     </h1>
-                    <Button className="end-button" variant="contained" color="secondary">
+                    <Button className="end-button" variant="contained" color="secondary" onClick ={() => {window.location.href = "/home";}}>
                         End Session
                     </Button>
 
