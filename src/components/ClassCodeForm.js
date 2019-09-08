@@ -81,7 +81,7 @@ class ClassCodeForm extends Component {
                 placeholder="ex. 123456"
                 label="Class Code"
               />
-              <Button type="submit" primary color="#000000" label="Submit" />
+              <Button type="submit" primary color="#6669B0" label="Submit" />
             </Form>
           ) : (
             ""
@@ -118,7 +118,7 @@ class ClassCodeForm extends Component {
                     type="submit"
                     label="Submit"
                     primary={true}
-                    color="#000000"
+                    color="#6669B0"
                   />
                 </Form>
               </Box>
