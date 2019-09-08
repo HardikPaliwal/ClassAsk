@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import ClassCodeForm from "./components/ClassCodeForm";
 import { Grommet } from "grommet";
 import { grommet } from "grommet/themes";
@@ -27,6 +27,7 @@ function App() {
    
    
   );
+
 }
 
 export default App;
